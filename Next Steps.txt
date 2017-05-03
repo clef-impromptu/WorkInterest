@@ -1,0 +1,4 @@
+1. add click signals to the circles, linked to local maps. 
+2. local analysis on local maps.
+3. salaries --- display in local map
+4. prefered and relative list disaplay. 

@@ -1,0 +1,2 @@
+1. Callback
+2. Difference between Object.key and Object[key]
