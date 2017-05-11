@@ -10,6 +10,7 @@ Cheerio
 D3
 Modal
 fs
+google charts
 
 When we request the job information per area, we can get the total amount of jobs in one city. First, we get a  set of data which is an object describing the amount of jobs in each city.
 
