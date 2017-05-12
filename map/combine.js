@@ -9,16 +9,16 @@ var city = ['Austin', 'Boston', 'Chicago', 'Dallas', 'Houston', 'LosAngeles', 'N
 
 for (var i = 0; i < city.length; i++) {
      var cityname=city[i];
-    companydata[cityname] = require('./' + city[i] + 'companydata.json');
+    companydata[cityname] = require('./localdataset/' + city[i] + 'companydata.json');
   
-    jobdata[cityname] = require('./' + city[i] + 'jobdata.json');
-    alldata[cityname] = require('./' + city[i] + 'alldata.json');
+    jobdata[cityname] = require('./localdataset/' + city[i] + 'jobdata.json');
+    alldata[cityname] = require('./localdataset/' + city[i] + 'alldata.json');
    
 }
-fs.writeFile('alldata.js', 'var alldata=');
-fs.appendFile('alldata.js', JSON.stringify(alldata));
-fs.appendFile('companydata.js', JSON.stringify(companydata));
-fs.writeFile('companydata.js', 'var companydata=');
-fs.appendFile('companydata.js', JSON.stringify(companydata));
-fs.writeFile('jobdata.js', 'var jobdata=');
-fs.appendFile('jobdata.js', JSON.stringify(jobdata));
+fs.writeFile('./localdataset/alldata.js', 'var alldata=');
+fs.appendFile('./localdataset/alldata.js', JSON.stringify(alldata));
+fs.appendFile('./localdataset/companydata.js', JSON.stringify(companydata));
+fs.writeFile('./localdataset/companydata.js', 'var companydata=');
+fs.appendFile('./localdataset/companydata.js', JSON.stringify(companydata));
+fs.writeFile('./localdataset/jobdata.js', 'var jobdata=');
+fs.appendFile('./localdataset/jobdata.js', JSON.stringify(jobdata));

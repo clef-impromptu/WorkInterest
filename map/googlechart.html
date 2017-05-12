@@ -1,47 +1,27 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="jobbubble.js"></script>
+<script src="./localdataset/jobbubble.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="d3.tip.js"></script>
-<script src="catalog_graph.js"></script>
+<script src="./localdataset/d3.tip.js"></script>
+<!-- <script src="./catalog_graph.js"></script> -->
 <link rel="stylesheet" href="styles-example.css">
 
 <body>
     <div id="target"></div>
 </body>
-<script>
-    $.url = function (name) {
-        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-        return results[1] || 0;
-    }
 
-    var city = $.url('city');
-    city = decodeURIComponent(city);
-// console.log(scores);
-   var scores = scores[city];
-   var count = 0
-   var new_scores = {}
-   for (var obj in scores){
-       new_scores[obj] = scores[obj]
-       count += 1
-       if (count === 200){
-           break
-       }
-   }
-    console.log(new_scores);
-    scores = new_scores; 
-
-    // visualize data
-    graph();
-
-</script>
-
-
+<style> 
+#chart{
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width:800;
+}
+</style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="companydata.js"></script>
-<script src="alldata.js"></script>
+<script src="./localdataset/companydata.js"></script>
+<script src="./localdataset/alldata.js"></script>
 <script>
     $.url = function (name) {
         var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
@@ -61,26 +41,25 @@
         var topcompany = companydata[city].slice(0, 20);
         data.addRows(topcompany);
         var options = {
-            // backgroundColor: '#F0FFF0',
+            backgroundColor: { fill:'transparent' },
             title: 'Popular companies in ' + city,
             titleTextStyle: {
                 //color: <string>,    // any HTML string color ('red', '#cc00cc')
                 //fontName: 'Times New Roman', // 
-                fontSize: 12,  //12, 18 whatever you want (don't specify px)
+                fontSize: 15,  //12, 18 whatever you want (don't specify px)
                 bold: true,    // true or false
                 //italic: true   // true of false
             },
-
-            width: 900,
+            chartArea:{left:200,top:100,width:"65%",height:"65%"}, 
+            width: 800,
             height: 450,
             hAxis: {
                 title: 'Total number',
                 titleTextStyle: {
                     //color: <string>,    // any HTML string color ('red', '#cc00cc')
                     //fontName: 'Times New Roman', // 
-                    fontSize: 8,  //12, 18 whatever you want (don't specify px)
+                    fontSize: 10,  //12, 18 whatever you want (don't specify px)
                     bold: true,    // true or false
-                    //italic: true   // true of false
                 },
 
                 textStyle: {
@@ -94,64 +73,33 @@
             vAxis: {
                 title: 'Company names',
                 titleTextStyle: {
-                    //color: <string>,    // any HTML string color ('red', '#cc00cc')
-                    //fontName: 'Times New Roman', // 
-                    fontSize: 8,  //12, 18 whatever you want (don't specify px)
+                    fontSize: 10,  
                     bold: true,    // true or false
-                    //italic: true   // true of false
                 },
                 textStyle: {
                     color: 'black',
-                    fontSize: 8
+                    fontSize: 10
                 },
             },
-            colors: ['#F3A2E6'],
+            colors: ['#276F8E'],
             legend: { position: "none" },
         };
 
         var chart = new google.visualization.BarChart(document.getElementById('company_chart_div'));
-        // console.log('hi')
         chart.draw(data, options);
 
-        // var newname = '';
-        // google.visualization.events.addListener(chart, 'select', function (e) {
-        //     console.log(chart.getSelection());
-        //     var bar = chart.getSelection();
-        //     var order = bar['0']['row'];
-        //     var topcompanyname = topcompany[order][0].toLowerCase().match(/([a-z]+)/g);
-        //     console.log(topcompanyname);
-        //     for (var i = 0; i < topcompanyname.length; i++) {
-        //         newname += topcompanyname[i];
-        //     }
-        //     //newname = topcompanyname.replace(/\s+/g, '')
-        //     console.log(newname);
-        //     //topcompanyname = topcompanyname.split(',');
-        //     //topcompanyname = topcompanyname[0]
-        //     var topcompanyurl = 'http://www.' + newname + '.com';
-        //     console.log(topcompanyurl);
-
-        //     var win = window.open(topcompanyurl, '_blank');
-        //     win.focus();
-
-        // });
         alldata = alldata[city];
 
 
         google.visualization.events.addListener(chart, 'select', function (e) {
-            //console.log(chart.getSelection());
             var bar = chart.getSelection();
             var order = bar['0']['row'];
-            //console.log(topcompany[order][0]);
             for (var m = 0; m < alldata.length; m++) {
                 if (alldata[m].company === topcompany[order][0]) {
-                    //console.log(alldata[m].company);
 
                     topcompanyurl = alldata[m].url;
                 }
             }
-
-            //var topcompanyurl = 'http://www.' + newname + '.com';
-            //console.log(topcompanyurl);
 
             var win = window.open(topcompanyurl, '_blank');
             win.focus();
@@ -170,7 +118,10 @@
     <table class="columns">
         <tr>
             <td>
-                <div id="company_chart_div" style="border: 0px solid #ccc"></div>
+                <div id="company_chart_div" style="border: 0px solid #ccc">
+                <!-- <div id="company_chart_div" style="border: 0px solid #ccc"> -->
+                    
+                </div>
             </td>
         </tr>
     </table>

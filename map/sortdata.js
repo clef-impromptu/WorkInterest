@@ -1,5 +1,5 @@
 var fs=require('fs');
-var jobdata = require('./jobdata.json');
+var jobdata = require('./localdataset/jobdata.json');
 var city = ['Austin', 'Boston', 'Chicago', 'Dallas', 'Houston', 'LosAngeles', 'NewYork', "Philadelphia",
     'SanDiego', 'SanFrancisco', 'Seattle', 'Washington'];
 var jobbubble = {};
@@ -22,5 +22,5 @@ for (var i = 0; i < city.length; i++) {
 }
 
 
-fs.writeFileSync('jobbubble.js','var scores=');
-fs.appendFileSync('jobbubble.js',JSON.stringify(jobbubble));
+fs.writeFileSync('./localdataset/jobbubble.js','var scores=');
+fs.appendFileSync('./localdataset/jobbubble.js',JSON.stringify(jobbubble));

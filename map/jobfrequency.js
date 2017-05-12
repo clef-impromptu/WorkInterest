@@ -1,10 +1,10 @@
 var fs = require('fs');
-var joblist = require('./joblist.json');
+var joblist = require('./localdataset/joblist.json');
 for (var i = 0; i < joblist.length; i++) {
     joblist[i] = joblist[i].toLowerCase()
 }
 
-var jobdata = require('./jobdata.json');
+var jobdata = require('./localdataset/jobdata.json');
 var city = ['Austin', 'Boston', 'Chicago', 'Dallas', 'Houston', 'LosAngeles', 'NewYork', "Philadelphia",
     'SanDiego', 'SanFrancisco', 'Seattle', 'Washington'];
 var jobcount = {};

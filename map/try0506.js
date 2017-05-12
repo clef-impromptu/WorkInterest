@@ -1,4 +1,4 @@
-var jobdata = require('./jobdata.json');
+var jobdata = require('.localdataset/jobdata.json');
 data = jobdata['Boston'];
 var items = [];
 for (var i = 0; i < data.length; i++) {

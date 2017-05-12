@@ -20,19 +20,19 @@ function graph(){
 
     var svg = d3.select("div[id=target]").append("svg")
         .attr("width", 800)
-        .attr("height", 300)
+        .attr("height", 1000)
         .attr("class", "vis")
       .append("g")
 
     svg.call(tip);
 
     for (var word in scores) {
-      nodes.push({radius: radius(scores[word]/150), color: color(word.length), word: word, score: scores[word]});  
+      nodes.push({radius: radius(scores[word]/100), color: color(word.length), word: word, score: scores[word]});  
     }
 
     force = d3.layout.force()
       .nodes(nodes)
-      .size([1024, 768])
+      .size([850, 768])
       .gravity(0.01)
       .charge(-0.01)
       .on("tick", tick)
@@ -42,7 +42,10 @@ function graph(){
       .data(nodes)
       .enter().append("circle")
       .attr("r", function(d) { return d.radius; })
-      .style("fill", function(d) { return d.color; })  
+      .style("fill", function(d) { return d.color; }) 
+      .style("stroke", "gray")
+      .style("stroke-width", .4)
+      .style("opacity", .8)  
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide)
       .call(force.drag);
