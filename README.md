@@ -4,14 +4,15 @@ by Jiamin Sun & Qinzi Luo
 
 workinterest is job platform based on geographic visualization. 15000 pieces of Unites states job opening data are obtained from business websites. Based on those data sets, jobtiles, locations, frequency of the keyword, the most popular companies in one specific area are analyzed and displayed. Additionally, top jobs's salaries in one area is queried by request google search. 
 
-In the map folder, load mapCircle in in the browser and enjoy. 
+In the map folder, load mapCircle in the browser and enjoy. 
 
 Libraries required:
-Cheerio
-D3
-Modal
-fs
-google charts
+Cheerio/
+D3/
+Modal/
+fs/
+google charts/
+
 
 When we request the job information per area, we can get the total amount of jobs in one city. First, we get a  set of data which is an object describing the amount of jobs in each city.
 
