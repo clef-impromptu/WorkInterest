@@ -120,7 +120,6 @@ var getcitysalary = function(){
         }
         // setTimeout(function(){ getData(c_key, urls); }, 5000);
         getData(c_key, urls); 
-
     }
     return citySalary;
 }; 
